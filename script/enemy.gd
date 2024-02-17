@@ -18,7 +18,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	var player_distance = player.position - position
-	print(player_distance)
 	direction = player_distance.normalized()
 
 func handle_projectile() -> void:
