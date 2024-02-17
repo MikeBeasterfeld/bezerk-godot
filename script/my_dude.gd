@@ -8,7 +8,7 @@ var last_shot: float = Time.get_unix_time_from_system()
 @export var shoot_speed: float = 0.5
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
 	if direction_x:
