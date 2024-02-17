@@ -6,6 +6,8 @@
 size = Vector2(16, 16)
 
 [node name="MyDude" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_33a3l")
 
 [node name="ColorRect" type="ColorRect" parent="."]
