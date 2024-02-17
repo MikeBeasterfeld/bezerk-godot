@@ -14,13 +14,14 @@ var new_direction = Vector2(0,1) #only move one spaces
 
 func _physics_process(delta: float) -> void:
 	var movement = speed * direction * delta
-	var collision = move_and_collide(movement)
-	if(collision):
-		print(collision.get_collider().name)
-		if(collision.get_collider().name == "bullet"):
-			queue_free()
+	move_and_collide(movement)
 
 func _on_timer_timeout() -> void:
 	var player_distance = player.position - position
 	print(player_distance)
 	direction = player_distance.normalized()
+
+func handle_projectile() -> void:
+	print("Ouch I've been shot!!!")
+	queue_free()
+	
