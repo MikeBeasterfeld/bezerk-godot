@@ -7,6 +7,7 @@ var last_shot: float = Time.get_unix_time_from_system()
 @export var move_speed: float = 300.0
 @export var shoot_speed: float = 0.5
 
+@export var sprite_size = 64
 
 func _physics_process(_delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
@@ -26,11 +27,15 @@ func _physics_process(_delta: float) -> void:
 	if(last_shot + shoot_speed < current_time):
 		var shoot_direction_x := Input.get_axis("ui_shoot_left", "ui_shoot_right")
 		var shoot_direction_y := Input.get_axis("ui_shoot_up", "ui_shoot_down")
-		var bullet_direction = Vector2(shoot_direction_x, shoot_direction_y)
+		#print(shoot_direction_x)
+		#print(shoot_direction_y)
+		print(shoot_direction_x + shoot_direction_y)
 		
-		if (bullet_direction):
+		if(abs(shoot_direction_x) + abs(shoot_direction_y) >= 0.8):
+			var bullet_direction = Vector2(shoot_direction_x, shoot_direction_y)
+
 			var instance = bullet_scene.instantiate()
-			instance.position = Vector2(position.x + 8, position.y + 8)
+			instance.position = Vector2(position.x + sprite_size/2, position.y + sprite_size/2)
 			instance.direction = Vector2(shoot_direction_x, shoot_direction_y)
 			get_tree().root.add_child(instance)
 			
