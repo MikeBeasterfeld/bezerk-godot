@@ -27,9 +27,6 @@ func _physics_process(_delta: float) -> void:
 	if(last_shot + shoot_speed < current_time):
 		var shoot_direction_x := Input.get_axis("ui_shoot_left", "ui_shoot_right")
 		var shoot_direction_y := Input.get_axis("ui_shoot_up", "ui_shoot_down")
-		#print(shoot_direction_x)
-		#print(shoot_direction_y)
-		print(shoot_direction_x + shoot_direction_y)
 		
 		if(abs(shoot_direction_x) + abs(shoot_direction_y) >= 0.8):
 			var bullet_direction = Vector2(shoot_direction_x, shoot_direction_y)

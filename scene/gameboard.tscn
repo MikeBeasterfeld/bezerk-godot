@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bf3wdqbuevwvu"]
 
 [ext_resource type="PackedScene" uid="uid://bi6vgl2mq1pif" path="res://scene/my_dude.tscn" id="1_buojm"]
-[ext_resource type="Script" path="res://scene/gameboard.gd" id="1_do3ha"]
+[ext_resource type="Script" path="res://script/gameboard.gd" id="1_do3ha"]
 [ext_resource type="Texture2D" uid="uid://bt43ce0n8kocp" path="res://asset/factory.png" id="2_4maac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qpqeq"]
