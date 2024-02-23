@@ -9,6 +9,7 @@ size = Vector2(4, 4)
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_sp57y")
+SPEED = 795
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 2)
