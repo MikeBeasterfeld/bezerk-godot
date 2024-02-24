@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 300
-@export var max_health : float = 50
-@export var health : float = 50
+@export var max_health : int = 50
+@export var health : int = 50
 @export var target : CharacterBody2D
 
 #it’s the current movement direction of the cactus enemy.
@@ -13,10 +13,11 @@ var new_direction = Vector2(0,1) #only move one spaces
 
 @onready var player = get_tree().root.get_node("Gameboard/MyDude")
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var health_bar: MTDBar = $HealthBar
+
 
 func _ready() -> void:
-	progress_bar.value = health/max_health * 100
+	health_bar.set_by_current_and_max(health, max_health)
 
 func _physics_process(delta: float) -> void:
 	var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
@@ -30,8 +31,7 @@ func _on_timer_timeout() -> void:
 func handle_projectile(projectile) -> void:
 	if(projectile.damage):
 		health -= projectile.damage
-		progress_bar.value = health/max_health * 100
-		print(health/max_health * 100)
+		health_bar.set_by_current_and_max(health, max_health)
 		print("Ouch I've been shot!!! health: ", health)
 	
 	if(health <= 0):

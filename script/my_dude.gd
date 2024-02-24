@@ -1,13 +1,19 @@
 extends CharacterBody2D
 
 var bullet_scene = load("res://scene/bullet.tscn")
+@onready var health_bar: MTDBar = $HealthBar
 
 var last_shot: float = Time.get_unix_time_from_system()
 
 @export var move_speed: float = 300.0
 @export var shoot_speed: float = 0.5
+@export var max_health: int = 100
+@export var health: int = 100
 
 @export var sprite_size: int = 64
+
+func _on_ready():
+	health_bar.set_by_current_and_max(health, max_health)
 
 func _physics_process(_delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
