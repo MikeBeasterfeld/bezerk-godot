@@ -71,4 +71,12 @@ autostart = true
 position = Vector2(-79, -22)
 navigation_polygon = SubResource("NavigationPolygon_y2m08")
 
+[node name="FPS" type="Label" parent="."]
+offset_left = 1493.0
+offset_top = 21.0
+offset_right = 1569.0
+offset_bottom = 49.0
+text = "FPS"
+horizontal_alignment = 2
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

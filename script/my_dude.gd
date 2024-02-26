@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 		
 		if(abs(shoot_direction_x) + abs(shoot_direction_y) >= 0.8):
 			var instance = bullet_scene.instantiate()
-			instance.position = Vector2(position.x + int(sprite_size/2), position.y + int(sprite_size/2))
+			instance.position = position
 			instance.direction = Vector2(shoot_direction_x, shoot_direction_y)
 			get_tree().root.add_child(instance)
 			
