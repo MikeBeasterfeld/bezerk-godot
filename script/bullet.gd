@@ -7,6 +7,9 @@ class_name MTDProjectile
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 func _physics_process(delta: float) -> void:
+	print("direction ", direction)
+	direction = direction.normalized()
+	print("direction normalized ", direction)
 	var movement = SPEED * direction * delta
 	var collision = move_and_collide(movement)
 	if(collision):
