@@ -31,13 +31,14 @@ func _physics_process(_delta: float) -> void:
 	var current_time: float = Time.get_unix_time_from_system()
 	
 	if(last_shot + shoot_speed < current_time):
-		var shoot_direction_x := Input.get_axis("ui_shoot_left", "ui_shoot_right")
-		var shoot_direction_y := Input.get_axis("ui_shoot_up", "ui_shoot_down")
+		var shoot_direction = Input.get_vector("ui_shoot_left", "ui_shoot_right", "ui_shoot_up", "ui_shoot_down")
 		
-		if(abs(shoot_direction_x) + abs(shoot_direction_y) >= 0.8):
+		if(abs(shoot_direction.x) > 0 or abs(shoot_direction.y) > 0):
+			print(shoot_direction)
+			print(abs(shoot_direction.x) - abs(shoot_direction.y))
 			var instance = bullet_scene.instantiate()
 			instance.position = position
-			instance.direction = Vector2(shoot_direction_x, shoot_direction_y)
+			instance.direction = shoot_direction
 			get_tree().root.add_child(instance)
 			
 			last_shot = current_time
