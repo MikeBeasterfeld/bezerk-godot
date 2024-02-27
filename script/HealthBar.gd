@@ -11,8 +11,10 @@ func _process(_delta: float) -> void:
 	pass
 
 func set_by_current_and_max(current: int, maximum: int):
+	assert(current <= maximum, "Current health cannot be higher than maximum health")
+
 	# one value must be a float or gdscript will do integer division
-	value = int(float(current)/maximum * 100)
+	value = int(current/float(maximum) * 100)
 
 func set_percent(new_value: int):
 	value = new_value

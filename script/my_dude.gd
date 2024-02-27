@@ -7,8 +7,8 @@ var last_shot: float = Time.get_unix_time_from_system()
 
 @export var move_speed: float = 300.0
 @export var shoot_speed: float = 0.5
-@export var max_health: int = 100
-@export var health: int = 100
+@export var max_health: int = 200
+@export var health: int = 200
 
 @export var sprite_size: int = 64
 
@@ -43,3 +43,13 @@ func _physics_process(_delta: float) -> void:
 			last_shot = current_time
 
 	move_and_slide()
+
+func handle_projectile(projectile) -> void:
+	if(projectile.damage):
+		health -= projectile.damage
+		health_bar.set_by_current_and_max(health, max_health)
+		print("Player health: ", health)
+	
+	if(health <= 0):
+		print("I'm DEAD")
+		move_speed = 0
