@@ -13,6 +13,7 @@ config_version=5
 config/name="Bezerk"
 run/main_scene="res://scene/gameboard.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=300
 config/icon="res://icon.svg"
 
 [display]
