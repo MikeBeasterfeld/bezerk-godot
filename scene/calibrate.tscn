@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgx2vwcivwjyn"]
+
+[ext_resource type="Script" path="res://script/Calibrate.gd" id="1_jtycf"]
+
+[node name="Calibrate" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jtycf")
+
+[node name="Left Stick" type="Node" parent="."]
+
+[node name="LeftStickCurrent" type="Label" parent="Left Stick"]
+offset_left = 451.0
+offset_top = 517.0
+offset_right = 586.0
+offset_bottom = 540.0
+text = "Left Stick Current"
+
+[node name="LeftStickLeft" type="Label" parent="Left Stick"]
+offset_left = 311.0
+offset_top = 470.0
+offset_right = 416.0
+offset_bottom = 493.0
+text = "Left Stick Left"
+
+[node name="LeftStickRight" type="Label" parent="Left Stick"]
+offset_left = 629.0
+offset_top = 475.0
+offset_right = 745.0
+offset_bottom = 498.0
+text = "Left Stick Right"
+
+[node name="LeftStickTop" type="Label" parent="Left Stick"]
+offset_left = 466.0
+offset_top = 359.0
+offset_right = 570.0
+offset_bottom = 382.0
+text = "Left Stick Top"
+
+[node name="LeftStickBottom" type="Label" parent="Left Stick"]
+offset_left = 447.0
+offset_top = 592.0
+offset_right = 580.0
+offset_bottom = 615.0
+text = "Left Stick Bottom"
+
+[node name="Right Stick" type="Node" parent="."]
+
+[node name="RightStickCurrent" type="Label" parent="Right Stick"]
+offset_left = 1122.0
+offset_top = 525.0
+offset_right = 1267.0
+offset_bottom = 548.0
+text = "Right Stick Current"
+
+[node name="RightStickLeft" type="Label" parent="Right Stick"]
+offset_left = 965.0
+offset_top = 496.0
+offset_right = 1081.0
+offset_bottom = 519.0
+text = "Right Stick Left"
+
+[node name="RightStickRight" type="Label" parent="Right Stick"]
+offset_left = 1309.0
+offset_top = 494.0
+offset_right = 1435.0
+offset_bottom = 517.0
+text = "Right Stick Right"
+
+[node name="RightStickTop" type="Label" parent="Right Stick"]
+offset_left = 1133.0
+offset_top = 387.0
+offset_right = 1247.0
+offset_bottom = 410.0
+text = "Right Stick Top"
+
+[node name="RightStickBottom" type="Label" parent="Right Stick"]
+offset_left = 1116.0
+offset_top = 597.0
+offset_right = 1260.0
+offset_bottom = 620.0
+text = "Right Stick Bottom
+"
