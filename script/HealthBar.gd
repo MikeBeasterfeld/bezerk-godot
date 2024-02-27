@@ -7,12 +7,12 @@ func _ready() -> void:
 	value = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
-func set_by_current_and_max(current: int, max: int):
+func set_by_current_and_max(current: int, maximum: int):
 	# one value must be a float or gdscript will do integer division
-	value = int(float(current)/max * 100)
+	value = int(float(current)/maximum * 100)
 
 func set_percent(new_value: int):
 	value = new_value
