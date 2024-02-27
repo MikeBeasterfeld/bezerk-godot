@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	var instance = enemy_scene.instantiate()
-	instance.position = Vector2(125, 75)
+	instance.position = Vector2(1500, 500)
 	instance.target = my_dude
 	
 	add_child(instance)
