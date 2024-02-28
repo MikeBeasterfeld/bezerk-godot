@@ -16,18 +16,9 @@ func _on_ready():
 	health_bar.set_by_current_and_max(health, max_health)
 
 func _physics_process(_delta: float) -> void:
-	var direction_x := Input.get_axis("ui_left", "ui_right")
-	var direction_y := Input.get_axis("ui_up", "ui_down")
-	if direction_x:
-		velocity.x = direction_x * move_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, move_speed)
+	var move_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	velocity = move_speed * move_direction.normalized()
 
-	if direction_y:
-		velocity.y = direction_y * move_speed
-	else:
-		velocity.y = move_toward(velocity.y, 0, move_speed)
-	
 	var current_time: float = Time.get_unix_time_from_system()
 	
 	if(last_shot + shoot_speed < current_time):
