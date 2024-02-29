@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbytcwow20sal"]
+[gd_scene load_steps=4 format=3 uid="uid://cbytcwow20sal"]
 
 [ext_resource type="Script" path="res://script/bullet.gd" id="1_sp57y"]
+[ext_resource type="Texture2D" uid="uid://6bwvelje6xma" path="res://asset/bullet.png" id="2_s51uf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_50iqt"]
-size = Vector2(4, 4)
+[sub_resource type="CircleShape2D" id="CircleShape2D_tgprr"]
+radius = 8.0
 
 [node name="bullet" type="CharacterBody2D"]
 collision_layer = 8
@@ -12,10 +13,15 @@ script = ExtResource("1_sp57y")
 SPEED = 795
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_50iqt")
+shape = SubResource("CircleShape2D_tgprr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
 color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.17233e-07, 4.17233e-07)
+texture = ExtResource("2_s51uf")
