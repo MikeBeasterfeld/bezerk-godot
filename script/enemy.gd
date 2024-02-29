@@ -8,15 +8,19 @@ extends CharacterBody2D
 @onready var bullet_scene = load("res://scene/bullet.tscn")
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var health_bar: MTDBar = $HealthBar
+@onready var turrent: Node2D = $Turrent
+@onready var projectile_source: Node2D = $Turrent/ProjectileSource
+
 
 func _ready() -> void:
 	health_bar.set_by_current_and_max(health, max_health)
 
 func _physics_process(delta: float) -> void:
 	var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
-	
 	var movement = speed * direction * delta
+	
 	move_and_collide(movement)
+	turrent.look_at(target.position)
 
 func _on_nav_update_timer_timeout() -> void:
 	navigation_agent_2d.target_position = target.global_position
@@ -36,6 +40,6 @@ func _on_shooting_timer_timeout() -> void:
 
 	var instance : MTDProjectile = bullet_scene.instantiate()
 	instance.set_enemy_projectile()
-	instance.position = position
+	instance.position = projectile_source.global_position
 	instance.direction = direction
 	get_tree().root.add_child(instance)
