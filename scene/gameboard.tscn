@@ -64,7 +64,7 @@ layer_0/tile_data = PackedInt32Array(1769472, 131075, 1342177280, 1703936, 65539
 position = Vector2(72, 416)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 autostart = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
