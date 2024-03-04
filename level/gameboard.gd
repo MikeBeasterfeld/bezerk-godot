@@ -1,21 +1,21 @@
 extends Node2D
 
-var enemy_scene = load("res://scene/enemy.tscn")
+var enemies = [preload("res://enemy/boom_bot.tscn"), preload("res://enemy/shooty_bot.tscn")]
+
+
 @onready var my_dude: CharacterBody2D = $MyDude
 @onready var timer: Timer = $Timer
 @onready var fps: Label = $FPS
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	fps.text = str(Engine.get_frames_per_second()) + " FPS"
 
 func _on_timer_timeout() -> void:
-	var instance = enemy_scene.instantiate()
-	instance.position = Vector2(1500, 500)
-	instance.target = my_dude
 	
-	add_child(instance)
+	var new_mob = (enemies.pick_random()).instantiate()
+	%SpawnFollow.progress_ratio = randf()
+	new_mob.global_position = %SpawnFollow.global_position
+	new_mob.target = my_dude
+	add_child(new_mob)
+	

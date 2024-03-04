@@ -1,20 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc3gbibcitcbg"]
+[gd_scene load_steps=6 format=3 uid="uid://dc3gbibcitcbg"]
 
-[ext_resource type="Script" path="res://script/enemy.gd" id="1_l6mgh"]
-[ext_resource type="PackedScene" uid="uid://c5qbwvl224ckh" path="res://scene/health_bar.tscn" id="2_ymrg5"]
-[ext_resource type="Texture2D" uid="uid://dgj1cn07nl0u1" path="res://asset/1way.png" id="3_pxeq2"]
+[ext_resource type="Script" path="res://enemy/boom_bot.gd" id="1_npnpx"]
+[ext_resource type="PackedScene" uid="uid://c5qbwvl224ckh" path="res://ui/health_bar.tscn" id="2_bi62y"]
+[ext_resource type="Texture2D" uid="uid://dgj1cn07nl0u1" path="res://asset/1way.png" id="3_nyowf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yiwj"]
 size = Vector2(32, 32)
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7tk5"]
+radius = 45.0111
+
+[node name="BoomBot" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 11
-script = ExtResource("1_l6mgh")
-speed = 95
+script = ExtResource("1_npnpx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2yiwj")
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_v7tk5")
+debug_color = Color(0.937255, 0.168627, 0.47451, 0.419608)
 
 [node name="NavUpdateTimer" type="Timer" parent="."]
 wait_time = 0.663
@@ -26,11 +35,7 @@ debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.678431, 0.909804, 0.129412, 1)
 
-[node name="HealthBar" parent="." instance=ExtResource("2_ymrg5")]
-
-[node name="ShootingTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+[node name="HealthBar" parent="." instance=ExtResource("2_bi62y")]
 
 [node name="Turrent" type="Node2D" parent="."]
 
@@ -39,13 +44,12 @@ offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
-color = Color(0.192157, 0.192157, 0.192157, 1)
+color = Color(0.929412, 0.219608, 0.239216, 1)
 
 [node name="ProjectileSource" type="Node2D" parent="Turrent"]
 position = Vector2(26, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Turrent"]
-texture = ExtResource("3_pxeq2")
+texture = ExtResource("3_nyowf")
 
 [connection signal="timeout" from="NavUpdateTimer" to="." method="_on_nav_update_timer_timeout"]
-[connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
