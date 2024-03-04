@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://t0682dnu557g"]
+
+[ext_resource type="Script" path="res://script/Title Screen.gd" id="1_fsht8"]
+
+[node name="Title Screen" type="Node2D"]
+script = ExtResource("1_fsht8")
+
+[node name="GameName" type="Label" parent="."]
+offset_left = -796.0
+offset_top = -349.0
+offset_right = 801.0
+offset_bottom = -212.0
+theme_override_font_sizes/font_size = 100
+text = "Game Name"
+horizontal_alignment = 1
+
+[node name="Start" type="Label" parent="."]
+offset_left = -796.0
+offset_top = -90.0
+offset_right = 796.0
+offset_bottom = -67.0
+theme_override_font_sizes/font_size = 40
+text = "Start Game"
+horizontal_alignment = 1
+
+[node name="Quit" type="Label" parent="."]
+offset_left = -794.0
+offset_top = -17.0
+offset_right = 798.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+horizontal_alignment = 1
+
+[node name="Selector" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Selector"]
+offset_left = -153.0
+offset_top = -76.0
+offset_right = -129.0
+offset_bottom = -47.0
+
+[node name="Camera2D" type="Camera2D" parent="."]

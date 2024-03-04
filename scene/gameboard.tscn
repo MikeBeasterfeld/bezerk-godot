@@ -79,4 +79,7 @@ offset_bottom = 49.0
 text = "FPS"
 horizontal_alignment = 2
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(807, 451)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
