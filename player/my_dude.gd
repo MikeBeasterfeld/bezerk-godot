@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var bullet_scene = load("res://scene/bullet.tscn")
+var bullet_scene = load("res://projectile/bullet.tscn")
 @onready var health_bar: MTDBar = $HealthBar
 
 var last_shot: float = Time.get_unix_time_from_system()

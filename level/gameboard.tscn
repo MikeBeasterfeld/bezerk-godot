@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf3wdqbuevwvu"]
+[gd_scene load_steps=8 format=3 uid="uid://bf3wdqbuevwvu"]
 
-[ext_resource type="PackedScene" uid="uid://bi6vgl2mq1pif" path="res://scene/my_dude.tscn" id="1_buojm"]
-[ext_resource type="Script" path="res://script/gameboard.gd" id="1_do3ha"]
+[ext_resource type="PackedScene" uid="uid://bi6vgl2mq1pif" path="res://player/my_dude.tscn" id="1_buojm"]
+[ext_resource type="Script" path="res://level/gameboard.gd" id="1_do3ha"]
 [ext_resource type="Texture2D" uid="uid://bt43ce0n8kocp" path="res://asset/factory.png" id="2_4maac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qpqeq"]
@@ -51,6 +51,12 @@ source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
 agent_radius = 33.0
 
+[sub_resource type="Curve2D" id="Curve2D_mx3dx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 62, 58, 0, 0, 0, 0, 64, 844, 0, 0, 0, 0, 1541.99, 851, 0, 0, 0, 0, 1534, 54, 0, 0, 0, 0, 56, 57)
+}
+point_count = 5
+
 [node name="Gameboard" type="Node2D"]
 script = ExtResource("1_do3ha")
 
@@ -64,7 +70,7 @@ layer_0/tile_data = PackedInt32Array(1769472, 131075, 1342177280, 1703936, 65539
 position = Vector2(72, 416)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -78,5 +84,15 @@ offset_right = 1569.0
 offset_bottom = 49.0
 text = "FPS"
 horizontal_alignment = 2
+
+[node name="Spawn" type="Path2D" parent="."]
+position = Vector2(3.11253, 0.135509)
+scale = Vector2(0.997991, 0.997491)
+curve = SubResource("Curve2D_mx3dx")
+
+[node name="SpawnFollow" type="PathFollow2D" parent="Spawn"]
+unique_name_in_owner = true
+position = Vector2(62, 58)
+rotation = 1.56825
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

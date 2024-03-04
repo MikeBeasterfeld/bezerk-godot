@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgx2vwcivwjyn"]
 
-[ext_resource type="Script" path="res://script/Calibrate.gd" id="1_jtycf"]
+[ext_resource type="Script" path="res://ui/Calibrate.gd" id="1_jtycf"]
 
 [node name="Calibrate" type="Control"]
 layout_mode = 3

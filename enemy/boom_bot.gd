@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-@export var speed = 300
+@export var speed = 150
 @export var max_health : int = 50
 @export var health : int = 50
 @export var target : CharacterBody2D
 
-@onready var bullet_scene = load("res://scene/bullet.tscn")
+@onready var bullet_scene = load("res://projectile/bullet.tscn")
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var health_bar: MTDBar = $HealthBar
 @onready var turrent: Node2D = $Turrent
@@ -19,8 +19,13 @@ func _physics_process(delta: float) -> void:
 	var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
 	var movement = speed * direction * delta
 	
-	move_and_collide(movement)
+	var collision = move_and_collide(movement)
+	if(collision):
+		if(collision.get_collider().has_method("handle_projectile")):
+			collision.get_collider().handle_projectile({ "damage": 25 })
+			queue_free()
 	turrent.look_at(target.position)
+	
 
 func _on_nav_update_timer_timeout() -> void:
 	navigation_agent_2d.target_position = target.global_position
@@ -35,11 +40,5 @@ func handle_projectile(projectile) -> void:
 		print("Avenge me!!!")
 		queue_free()
 
-func _on_shooting_timer_timeout() -> void:
-	var direction = to_local(target.position).normalized()
 
-	var instance : MTDProjectile = bullet_scene.instantiate()
-	instance.set_enemy_projectile()
-	instance.position = projectile_source.global_position
-	instance.direction = direction
-	get_tree().root.add_child(instance)
+
