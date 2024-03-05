@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 		if(collision.get_collider().has_method("handle_projectile")):
 			collision.get_collider().handle_projectile({ "damage": 25 })
 			queue_free()
-	turrent.look_at(target.position)
+	turrent.look_at(navigation_agent_2d.get_next_path_position())
 	
 
 func _on_nav_update_timer_timeout() -> void:
