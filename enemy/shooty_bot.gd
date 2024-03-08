@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var target : CharacterBody2D
 
 @onready var bullet_scene = load("res://projectile/bullet.tscn")
+@onready var loot_table: LootTable = load("res://shared/loot_table.tscn").instantiate()
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var health_bar: MTDBar = $HealthBar
 @onready var turrent: Node2D = $Turrent
@@ -14,6 +15,8 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	health_bar.set_by_current_and_max(health, max_health)
+	add_child(loot_table)
+	loot_table.tier_1_drop_chance = 100.0
 
 func _physics_process(delta: float) -> void:
 	var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
@@ -32,6 +35,7 @@ func handle_projectile(projectile) -> void:
 		print("Ouch I've been shot!!! health: ", health)
 	
 	if(health <= 0):
+		loot_table.drop(position)
 		print("Avenge me!!!")
 		queue_free()
 
