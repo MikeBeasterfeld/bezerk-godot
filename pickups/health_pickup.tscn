@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjdcj8ipdkjk5"]
+
+[ext_resource type="Script" path="res://pickups/health_pickup.gd" id="1_nmy1r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olldp"]
+
+[node name="health_pickup" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_nmy1r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.65098, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_olldp")

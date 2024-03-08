@@ -39,6 +39,8 @@ func _physics_process(_delta: float) -> void:
 func handle_projectile(projectile) -> void:
 	if(projectile.damage):
 		health -= projectile.damage
+		if health > max_health:
+			health = max_health
 		health_bar.set_by_current_and_max(health, max_health)
 		print("Player health: ", health)
 	
