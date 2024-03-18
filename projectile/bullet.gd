@@ -11,8 +11,10 @@ func _physics_process(delta: float) -> void:
 	var movement = SPEED * direction * delta
 	var collision = move_and_collide(movement)
 	if(collision):
+		print(collision)
+		print(collision.get_collider())
 		if(collision.get_collider().has_method("handle_projectile")):
-			collision.get_collider().handle_projectile({ "damage": 25 })
+			collision.get_collider().handle_projectile({ "damage": 25, "collision": collision })
 		queue_free()
 
 func set_enemy_projectile():
