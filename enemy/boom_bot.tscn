@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc3gbibcitcbg"]
+[gd_scene load_steps=10 format=3 uid="uid://dc3gbibcitcbg"]
 
 [ext_resource type="Script" path="res://enemy/boom_bot.gd" id="1_npnpx"]
 [ext_resource type="PackedScene" uid="uid://c5qbwvl224ckh" path="res://ui/health_bar.tscn" id="2_bi62y"]
@@ -7,8 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yiwj"]
 size = Vector2(32, 32)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2ne2"]
+radius = 117.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7tk5"]
-radius = 45.0111
+radius = 220.009
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ts7ts"]
 atlas = ExtResource("3_8cn0t")
@@ -40,8 +43,18 @@ script = ExtResource("1_npnpx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2yiwj")
 
+[node name="DetectionBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
+shape = SubResource("CircleShape2D_p2ne2")
+debug_color = Color(0.403922, 0.501961, 0.905882, 0.419608)
+
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_v7tk5")
@@ -59,18 +72,15 @@ debug_path_custom_color = Color(0.678431, 0.909804, 0.129412, 1)
 
 [node name="HealthBar" parent="." instance=ExtResource("2_bi62y")]
 
-[node name="Turrent" type="Node2D" parent="."]
+[node name="ExplodeTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="Turrent"]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-color = Color(0.929412, 0.219608, 0.239216, 1)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turrent"]
+[node name="BoomBotAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d07af")
-autoplay = "default"
 frame_progress = 0.954377
 
+[connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="NavUpdateTimer" to="." method="_on_nav_update_timer_timeout"]
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
