@@ -46,4 +46,4 @@ func handle_projectile(projectile) -> void:
 	
 	if(health <= 0):
 		print("I'm DEAD")
-		move_speed = 0
+		get_tree().paused = true
