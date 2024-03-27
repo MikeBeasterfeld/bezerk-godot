@@ -19,8 +19,15 @@ func _ready() -> void:
 	loot_table.tier_1_drop_chance = 100.0
 
 func _physics_process(delta: float) -> void:
+	print("Target distance ", position.distance_to(target.position))
+	
+	var current_speed = speed
+	
+	if (position.distance_to(target.position) < 200):
+		current_speed = 100
+
 	var direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
-	var movement = speed * direction * delta
+	var movement = current_speed * direction * delta
 	
 	move_and_collide(movement)
 	turrent.look_at(target.position)
