@@ -1,23 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi6vgl2mq1pif"]
+[gd_scene load_steps=6 format=3 uid="uid://bi6vgl2mq1pif"]
 
 [ext_resource type="Script" path="res://player/my_dude.gd" id="1_33a3l"]
 [ext_resource type="PackedScene" uid="uid://c5qbwvl224ckh" path="res://ui/health_bar.tscn" id="2_lnygx"]
 [ext_resource type="Texture2D" uid="uid://bb038x6jo7d5v" path="res://player/crosshair.png" id="3_1803p"]
+[ext_resource type="Texture2D" uid="uid://d0ija2k851umk" path="res://asset/guy.png" id="4_qmlgi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3i1r"]
-size = Vector2(64, 64)
+size = Vector2(48, 64)
 
 [node name="MyDude" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 21
 script = ExtResource("1_33a3l")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -32.0
-offset_top = -31.0
-offset_right = 32.0
-offset_bottom = 33.0
-color = Color(0.615686, 0.384314, 0.827451, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -32,3 +26,8 @@ offset_bottom = -34.0
 visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_1803p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-06, 1.28889)
+scale = Vector2(1.11111, 1.11111)
+texture = ExtResource("4_qmlgi")
