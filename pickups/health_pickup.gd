@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var collision = move_and_collide(Vector2(0,0))
 	if(collision):
 		if(collision.get_collider().has_method("handle_projectile")):

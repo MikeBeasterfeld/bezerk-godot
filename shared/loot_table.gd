@@ -18,7 +18,7 @@ func drop(drop_position: Vector2):
 	print("my random: ", my_random_number)
 	
 	if (tier_1_drop_chance > my_random_number):
-		var drop = (tier_1_drops.pick_random()).instantiate()
-		print("dropping " + drop.name)
-		drop.position = drop_position
-		get_tree().root.add_child(drop)
+		var dropped_item = (tier_1_drops.pick_random()).instantiate()
+		print("dropping " + dropped_item.name)
+		dropped_item.position = drop_position
+		get_tree().root.add_child(dropped_item)

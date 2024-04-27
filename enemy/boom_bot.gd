@@ -33,7 +33,7 @@ func handle_projectile(projectile) -> void:
 		print("Avenge me!!!")
 		queue_free()
 
-func _on_detection_box_body_entered(body):
+func _on_detection_box_body_entered(_body):
 	%ExplodeTimer.start()
 	print("Time to go boom!")
 	$BoomBotAnimation.play()
